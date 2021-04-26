@@ -3,12 +3,15 @@
   padding: 0;
 }
 
+body {
+  background-image: url(../img/back4478517_l.jpg);
+}
+
 header {
   display: flex;
-  background-color: white;
   justify-content: space-between;
   align-items: center;
-  margin-right: 20px;
+  margin: 0 5%;
 }
 
 .header-left  > img {
@@ -29,15 +32,18 @@ h1 {
   font-size: 20px;
   margin-left: 20px;
   margin-right: 20px;
-  text-decoration: none; 
+  text-align: center;
+}
+
+.hamberger, .btn {
+  display: none;
 }
 
 /* 「bgAnime」という背景色の変わるキーフレームを設定し、それをbodyタグに「animation」プロパティで20秒で再生し続けるという設定です。 */
 
 .box {
-  height: 90vh;
-  width: 100vw;
-  max-width: 100%;
+  height: 100vh; 
+  width: 90vw;
   position: relative;
   margin     : auto;
   overflow   : hidden;
@@ -54,22 +60,23 @@ h1 {
   right      : 0;
   opacity    : 0;
   animation  : bgAnime 20s infinite;   /* 4画像 × 各5s = 20s */
+  
 }
 
 /* --- 段差で背景画像のアニメーションを実行 ----------------- */
 .box .src1 {
-  background-image : url(../img/640x640_rect_114235783.jpg);   /* 背景の画像を指定 */
+  background-image : url(../img/1.640x640_rect_114235783.jpg);   /* 背景の画像を指定 */
 }
 .box .src2 {
-  background-image : url(../img/IMG_3186.jpg);   /* 背景の画像を指定 */
+  background-image : url(../img/2.IMG_3186.jpg);   /* 背景の画像を指定 */
   animation-delay  : 5s;
 }
 .box .src3 {
-  background-image : url(../img/TP200710_kakigori_022.jpg);   /* 背景の画像を指定 */
+  background-image : url(../img/3.TP200710_kakigori_022.jpg);   /* 背景の画像を指定 */
   animation-delay  : 10s;
 }
 .box .src4 {
-  background-image : url(../img/ETST6CkUUAIHFcE.jpg);   /* 背景の画像を指定 */
+  background-image : url(../img/4.ETST6CkUUAIHFcE.jpg);   /* 背景の画像を指定 */
   animation-delay  : 15s;
 }
 
@@ -82,11 +89,11 @@ h1 {
 100% { opacity: 0; }
 }
 
-
 h2 {
   font-size: 30px;
   margin-top: 70px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 h3 {
@@ -109,18 +116,17 @@ p {
 
 .contner{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
 }
 
-#line-up, #concept,
+/* #line-up, #concept,
 #access, #map{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 50px;
-}
+} */
 
 .concept-in {
   display: flex;
@@ -190,8 +196,7 @@ th {
 .baka {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  margin: 0 50px;
+  justify-content: space-around;
 }
 
 .ta {
@@ -234,11 +239,146 @@ button {
   margin-bottom: 50px;
 }
 
-
 footer {
   color: black;
   text-align: center;
   padding: 20px 0;
   margin-top: 50px;
   font-size: 20px;
+}
+
+@media screen and (max-width:780px) {
+  .body {
+    margin: 0%;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+  }  
+
+  .btn {
+    display: block;
+    position: relative;
+    width: 35px;
+    height: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .icon, .icon::before, .icon::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 2px;
+    width: 35px;
+    background-color: gray;
+    display: block;
+    content: '';
+    transition: all 1s;
+  }
+
+  .icon, .icon::before, .icon::after{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 2px;
+    width: 35px;
+    background-color: gray;
+    display: block;
+    counter-reset: '';
+    transition: all 1s;
+  }
+
+  .icon::before {
+    top: 25px;
+  }
+
+  .icon::after {
+    top: -25px
+  }
+
+  .hamberger:checked ~.btn .icon {
+    background-color: transparent;
+  }
+
+  .hamberger:checked ~ .btn .icon::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  .hamberger:checked ~ .btn .icon::after {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .hamberger:checked ~ .nav {
+    display: flex;
+  }
+
+  .contner, .baka {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .smp {
+    width: 500px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .tet {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ta {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .nav > li > a {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+  .map-in {
+    width: 300px;
+    height: 300px;
+  }
+
+  .list-all {
+    display: flex;
+    justify-content: center;
+  }
+
+ .list-all > div {
+    width: 300px;
+    height: 300px;
+  }
+
+  .box {
+    height: 40vh;
+  }
+
+
+
+
 }
